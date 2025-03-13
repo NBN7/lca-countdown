@@ -31,8 +31,8 @@ export const Countdown = () => {
   return (
     <main className="flex flex-col items-center justify-center min-h-dvh p-4">
       <div className="w-full max-w-3xl space-y-8">
-        <TimeDisplay title="Tiempo restante" timeUnits={remaining} />
         <TimeDisplay title="Tiempo transcurrido" timeUnits={elapsed} />
+        <TimeDisplay title="Tiempo restante" timeUnits={remaining} />
       </div>
     </main>
   );
