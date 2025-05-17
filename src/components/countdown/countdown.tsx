@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { TimeDisplay } from "@/components";
 import { OPERATION_DATE, TARGET_DATE } from "@/constants";
+import { calculateTimeUnits } from "@/utils";
 import type { TTimeUnit } from "@/types";
 
 export const Countdown = () => {
@@ -36,18 +37,4 @@ export const Countdown = () => {
       </div>
     </main>
   );
-};
-
-const calculateTimeUnits = (ms: number): TTimeUnit[] => {
-  const seconds = Math.floor(ms / 1000) % 60;
-  const minutes = Math.floor(ms / (1000 * 60)) % 60;
-  const hours = Math.floor(ms / (1000 * 60 * 60)) % 24;
-  const days = Math.floor(ms / (1000 * 60 * 60 * 24));
-
-  return [
-    { value: days, label: "días" },
-    { value: hours, label: "horas" },
-    { value: minutes, label: "minutos" },
-    { value: seconds, label: "segundos" },
-  ];
 };
