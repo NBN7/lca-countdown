@@ -22,10 +22,11 @@ export const TimeDisplay = ({ title, timeUnits }: TimeDisplayProps) => {
       : !unit.value.toString().includes(".")
   );
 
-  const toggleTimeType = () =>
+  const toggleTimeType = () => {
     setTimeType((prev) =>
       prev === TIME_TYPE.INTEGER ? TIME_TYPE.DECIMAL : TIME_TYPE.INTEGER
     );
+  };
 
   return (
     <div className="space-y-2">
