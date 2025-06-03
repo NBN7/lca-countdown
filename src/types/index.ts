@@ -1,2 +1,2 @@
 export * from "@/types/time-unit";
-export * from "@/types/time-type";
+export * from "@/types/time-group";

@@ -1,2 +1,2 @@
 export * from "@/constants/dates";
-export * from "@/constants/time-type";
+export * from "@/constants/time-group";

@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { TimeUnit } from "@/components";
 import { Button } from "@/components/ui/button";
-import { TIME_TYPE } from "@/constants";
+import { TIME_GROUP } from "@/constants";
 import { SwitchIcon } from "@/icons";
-import type { TTimeUnit, TTimeType } from "@/types";
+import type { TTimeUnit, TTimeGroup } from "@/types";
 
 interface TimeDisplayProps {
   title: string;
@@ -13,20 +13,14 @@ interface TimeDisplayProps {
 }
 
 export const TimeDisplay = ({ title, timeUnits }: TimeDisplayProps) => {
-  const [timeType, setTimeType] = useState<TTimeType>(TIME_TYPE.INTEGER);
+  const [groupTime, setTimeGroup] = useState<TTimeGroup>(TIME_GROUP.ONE);
 
-  const isDecimal = timeType === TIME_TYPE.DECIMAL;
-  const timeToDisplay = timeUnits.filter((unit) =>
-    isDecimal
-      ? unit.value.toString().includes(".")
-      : !unit.value.toString().includes(".")
-  );
+  const groupOne = timeUnits.filter((unit) => unit.group === 1);
+  const groupTwo = timeUnits.filter((unit) => unit.group === 2);
 
-  const toggleTimeType = () => {
-    setTimeType((prev) =>
-      prev === TIME_TYPE.INTEGER ? TIME_TYPE.DECIMAL : TIME_TYPE.INTEGER
-    );
-  };
+  const timeToDisplay = groupTime === 1 ? groupOne : groupTwo;
+
+  const toggleTimeType = () => setTimeGroup((prev) => (prev === 1 ? 2 : 1));
 
   return (
     <div className="space-y-2">
@@ -37,8 +31,8 @@ export const TimeDisplay = ({ title, timeUnits }: TimeDisplayProps) => {
         </Button>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4">
-        {timeToDisplay.map(({ value, label }, i) => (
-          <TimeUnit key={i} value={value} label={label} />
+        {timeToDisplay.map((timeUnit, i) => (
+          <TimeUnit key={i} timeUnit={timeUnit} />
         ))}
       </div>
     </div>

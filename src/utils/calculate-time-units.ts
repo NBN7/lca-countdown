@@ -10,12 +10,12 @@ export const calculateTimeUnits = (ms: number): TTimeUnit[] => {
   const years = parseFloat((ms / (1000 * 60 * 60 * 24 * 365)).toFixed(2));
 
   return [
-    { value: years, label: "años" },
-    { value: months, label: "meses" },
-    { value: weeks, label: "semanas" },
-    { value: days, label: "días" },
-    { value: hours, label: "horas" },
-    { value: minutes, label: "minutos" },
-    { value: seconds, label: "segundos" },
+    { value: years, label: "años", group: 2 },
+    { value: months, label: "meses", group: 2 },
+    { value: weeks, label: "semanas", group: 2 },
+    { value: days, label: "días", group: 1 },
+    { value: hours, label: "horas", group: 1 },
+    { value: minutes, label: "minutos", group: 1 },
+    { value: seconds, label: "segundos", group: 1 },
   ];
 };
