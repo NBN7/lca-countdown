@@ -2,17 +2,19 @@ import { Card } from "@/components/ui/card";
 import type { TTimeUnit } from "@/types";
 
 interface TimeUnitProps {
-  timeUnit: TTimeUnit;
+  timeUnit?: TTimeUnit;
+  percentage?: number;
 }
+export const TimeUnit = ({ timeUnit, percentage }: TimeUnitProps) => {
+  const isPercentage = percentage !== undefined;
 
-export const TimeUnit = ({ timeUnit }: TimeUnitProps) => {
   return (
     <Card className="flex flex-col items-center justify-center p-4 aspect-square">
       <span className="text-4xl font-bold tabular-nums transition-all duration-300">
-        {timeUnit.value}
+        {isPercentage ? `${percentage}%` : timeUnit?.value}
       </span>
       <span className="text-sm text-muted-foreground mt-2">
-        {timeUnit.label}
+        {isPercentage ? "Porcentaje" : timeUnit?.label}
       </span>
     </Card>
   );
