@@ -14,7 +14,7 @@ export const TimeUnit = ({ timeUnit, percentage }: TimeUnitProps) => {
         {isPercentage ? `${percentage}%` : timeUnit?.value}
       </span>
       <span className="text-sm text-muted-foreground mt-2">
-        {isPercentage ? "Porcentaje" : timeUnit?.label}
+        {isPercentage ? "porcentaje" : timeUnit?.label}
       </span>
     </Card>
   );
